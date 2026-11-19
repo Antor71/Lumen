@@ -1,0 +1,278 @@
+/* Lumen design adapted from the supplied LearnLoop reference.
+   Light theme: slate surfaces, indigo actions, teal highlights. */
+:root {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #526176;
+  --line: #e2e8f0;
+  --soft: #eef2ff;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --on-accent: #ffffff;
+  --teal: #0f766e;
+  --teal-soft: #ccfbf1;
+  --focus: #4f46e5;
+  --shadow: 0 4px 14px rgba(15, 23, 42, .04);
+}
+
+/* Dark theme overrides used by every page, form, card and navigation area. */
+body.dark {
+  --background: #0b0f19;
+  --surface: #111827;
+  --text: #f8fafc;
+  --muted: #bdc9db;
+  --line: #344155;
+  --soft: #242544;
+  --accent: #a5b4fc;
+  --accent-hover: #c7d2fe;
+  --on-accent: #15183e;
+  --teal: #5eead4;
+  --teal-soft: #143b39;
+  --focus: #a5b4fc;
+  --shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+
+/* Base sizing and typography. System fallback keeps the site usable offline. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 16px/1.6 "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--background);
+}
+button, input, textarea, select { font: inherit; }
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.25; letter-spacing: -.025em; margin: 0 0 .6rem; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.05rem; }
+p { margin: 0 0 .85rem; overflow-wrap: anywhere; }
+h1, h2, h3 { overflow-wrap: anywhere; }
+
+/* Shared buttons and ordinary HTML links styled as buttons. */
+button, .button-link {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: .55rem;
+  color: var(--on-accent);
+  background: var(--accent);
+  cursor: pointer;
+  font-weight: 650;
+  font-size: .9rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+button:hover, .button-link:hover { background: var(--accent-hover); }
+button:disabled { opacity: .55; cursor: default; }
+.secondary {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--line);
+}
+.secondary:hover { background: var(--soft); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Shared header, supplied image logo, guest links and mobile menu control. */
+.topbar, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.topbar {
+  min-height: 74px;
+  justify-content: space-between;
+  padding: .85rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+.brand:hover { background: transparent; }
+/* The supplied logo sits on white so its dark details show in both themes. */
+.brand-logo {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: .65rem;
+}
+#account-label { color: var(--muted); font-size: .8rem; }
+.public-nav { display: flex; gap: 1.5rem; align-items: center; }
+.public-nav a { font-size: .9rem; font-weight: 600; text-decoration: none; color: var(--muted); }
+.public-nav a:hover { color: var(--accent); }
+.menu-button { display: none; }
+
+/* Signed-in layout and sidebar. Links stay visible in the desktop column. */
+.layout { min-height: 90vh; }
+.layout.signed-in { display: grid; grid-template-columns: 228px minmax(0, 1fr); }
+.sidebar { background: var(--surface); border-right: 1px solid var(--line); padding: 1.4rem .85rem; }
+.nav-heading { color: var(--muted); margin: 1rem .75rem .4rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+.nav-button, a.nav-button, .mode-button {
+  display: block;
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  background: transparent;
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: left;
+}
+.nav-button:hover, a.nav-button:hover, .nav-button.active, a.nav-button.active, .mode-button:hover { background: var(--soft); color: var(--accent); }
+.mode-button { margin: 1rem 0; border-color: var(--line); }
+.logout-button { margin-top: .75rem; }
+
+/* Shared content spacing, page introductions and footer across all modules. */
+main { width: 100%; max-width: 1280px; min-width: 0; margin: 0 auto; padding: 2rem 2.25rem; }
+.page-intro { margin: 0 0 1.6rem; }
+.page-intro p, .card p { color: var(--muted); }
+.eyebrow { color: var(--teal); font-size: .75rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+footer { border-top: 1px solid var(--line); padding: 1.5rem 0 .5rem; margin-top: 3rem; color: var(--muted); font-size: .8rem; }
+.footer-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-inner a { color: var(--muted); text-decoration: none; }
+
+/* Landing page: photo-led hero, learning steps and community previews. */
+.landing-hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: center; padding: 3.25rem 0 4rem; }
+.landing-hero h1 { font-size: 3.35rem; font-weight: 800; line-height: 1.12; letter-spacing: -.045em; }
+.landing-hero h1 span { color: var(--accent); }
+.hero-copy > p { color: var(--muted); font-size: 1.05rem; }
+.hero-copy > .eyebrow { color: var(--teal); font-size: .75rem; }
+.hero-copy .actions { margin-top: 1.5rem; }
+.hero-photo { margin: 0; }
+.hero-photo img { width: 100%; height: auto; display: block; border-radius: 1rem; box-shadow: 0 16px 32px rgba(15, 23, 42, .13); }
+.hero-photo figcaption { font-size: .78rem; color: var(--muted); margin-top: .75rem; }
+.landing-section { padding: 2rem 0; border-top: 1px solid var(--line); }
+.section-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+.section-heading p { margin: 0; color: var(--muted); }
+.step-label, .skill-icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--soft); color: var(--accent); border-radius: .65rem; font-size: 1.05rem; font-weight: 750; margin-bottom: 1rem; }
+
+/* Local community logos: contain keeps each logo proportional in both themes. */
+.skill-icon { width: 56px; height: 56px; }
+.skill-icon img { display: block; width: 36px; height: 36px; object-fit: contain; }
+
+/* Dashboard welcome panel, metric cards and two-column activity workspace. */
+.hero { background: var(--surface); border: 1px solid var(--line); border-radius: .85rem; padding: 1.75rem; margin-bottom: 1.5rem; }
+.hero p { color: var(--muted); }
+.hero .eyebrow { color: var(--teal); }
+.hero .actions { margin-top: 1.25rem; }
+.dashboard-columns { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; }
+.panel { padding: 1.4rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface); }
+.panel-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; margin-bottom: 1rem; }
+.panel-heading a { font-size: .85rem; font-weight: 650; text-decoration: none; }
+#dashboard-stats .card h3, #admin-stats .card h3 { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; }
+.metric-card .amount { font-size: 2rem; font-weight: 750; color: var(--text); margin: .4rem 0; }
+.metric-card p:last-child { font-size: .8rem; }
+.summary-item { background: var(--background); border: 1px solid var(--line); border-radius: .65rem; padding: 1rem; margin-bottom: .75rem; }
+.summary-item p { font-size: .85rem; color: var(--muted); }
+
+/* Community cards, teachers, request feeds, status labels and empty feedback. */
+.grid { display: grid; gap: 1.25rem; margin-bottom: 1.5rem; }
+.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; padding: 1.4rem; box-shadow: var(--shadow); overflow-wrap: anywhere; }
+.cards { display: grid; gap: 1rem; margin: 1rem 0 1.5rem; }
+.card p { font-size: .9rem; }
+.card .actions, .view > .actions { margin: 1rem 0; }
+.card .actions:last-child, .card p:last-child { margin-bottom: 0; }
+.tag { display: inline-block; border-radius: .3rem; padding: .2rem .5rem; background: var(--teal-soft); color: var(--teal) !important; font-size: .75rem !important; font-weight: 650; }
+.notice { background: var(--soft); color: var(--muted); border-radius: .6rem; padding: .85rem 1rem; }
+.community-card { display: flex; flex-direction: column; }
+.community-card .actions { margin-top: auto; padding-top: 1rem; }
+.community-card .tag { align-self: flex-start; }
+.avatar { width: 48px; height: 48px; line-height: 48px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #0d9488); color: #fff; font-weight: bold; text-align: center; margin-bottom: 1rem; }
+
+/* Account pages: centered login/registration cards; editable profile fields. */
+.auth-page main { max-width: 520px; padding-top: 3.5rem; }
+.auth-page .page-intro { text-align: center; }
+.auth-page h1 { font-size: 1.8rem; }
+.auth-page .form { padding: 2rem; }
+.auth-page .form button { width: 100%; }
+.auth-page .view > .actions { justify-content: center; }
+.form, .search { max-width: 38rem; margin-bottom: 1.25rem; }
+.form label, .search label { display: block; font-size: .85rem; font-weight: 650; margin-bottom: .35rem; }
+input, textarea, select { display: block; width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: .55rem; padding: .65rem .8rem; margin-bottom: 1rem; font-size: .93rem; }
+input::placeholder { color: var(--muted); }
+textarea { resize: vertical; }
+.feedback { margin: .75rem 0 0; font-size: .85rem; font-weight: 600; }
+.feedback:empty { display: none; }
+.profile-card { border-top: 5px solid var(--accent); max-width: 48rem; padding: 2rem; }
+.profile-card h3 { margin-top: 1.5rem; }
+#settings > .card.actions { align-items: stretch; }
+#settings > .card.actions a, #settings > .card.actions button { text-align: center; }
+
+/* Admin and payment tables: local horizontal scrolling on narrow screens. */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: .88rem; }
+th, td { padding: .95rem 1rem; border-bottom: 1px solid var(--line); }
+th { background: var(--background); color: var(--muted); font-weight: 650; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--background); }
+
+/* Chat: conversation header, message bubbles and composer. */
+#chat-partner { background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 650; }
+#chat-messages { display: flex; flex-direction: column; min-height: 220px; max-height: 460px; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; padding: 1.25rem; }
+.message { max-width: 78%; padding: .8rem 1rem; border-radius: .85rem; background: var(--background); border: 1px solid var(--line); align-self: flex-start; overflow-wrap: anywhere; }
+.message h3 { font-size: .75rem; margin-bottom: .3rem; }
+.message p { margin: 0; font-size: .9rem; }
+.message.sent { background: var(--soft); border-color: var(--soft); align-self: flex-end; }
+#chat-form { max-width: none; box-shadow: none; }
+#chat-form textarea { min-height: 75px; }
+
+/* Video demo: two participant tiles and a visible state for each control. */
+.video-stage { border: 1px solid #334155; padding: 1.25rem; border-radius: 1rem; background: #0b0f19; color: #f8fafc; }
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.video-tile { display: flex; min-height: 270px; flex-direction: column; align-items: center; justify-content: center; border-radius: .75rem; background: #1e293b; padding: 1rem; text-align: center; }
+.video-tile h2 { font-size: 1rem; letter-spacing: 0; margin-top: .85rem; }
+.video-initial { display: inline-block; width: 72px; height: 72px; line-height: 72px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #0d9488); color: #fff; font-size: 1.6rem; font-weight: 700; }
+.video-tile p { font-size: .85rem; color: #cbd5e1; margin: 0; }
+#video-status { text-align: center; font-size: .85rem; margin-bottom: 0; }
+.hidden { display: none !important; }
+
+/* Tablet: tighter content spacing and two-column community cards. */
+@media (max-width: 1050px) {
+  main { padding: 1.5rem; }
+  .layout.signed-in { grid-template-columns: 200px minmax(0, 1fr); }
+  .three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .landing-hero { gap: 1.5rem; }
+  .landing-hero h1 { font-size: 2.7rem; }
+  .dashboard-columns { grid-template-columns: 1fr; }
+}
+
+/* Phones: collapsible sidebar, stacked forms/cards, compact header and video. */
+@media (max-width: 700px) {
+  .layout.signed-in { display: block; }
+  .sidebar { display: none; border-right: 0; border-bottom: 1px solid var(--line); }
+  .sidebar.open { display: block; }
+  .menu-button { display: inline-block; }
+  .topbar { padding: .8rem 1rem; gap: .75rem; }
+  .brand { font-size: 1.15rem; }
+  .header-actions { gap: .4rem; }
+  .header-actions button { padding: .5rem .65rem; font-size: .8rem; }
+  #account-label { display: none; }
+  .public-nav { gap: .8rem; order: 3; width: 100%; padding-top: .65rem; border-top: 1px solid var(--line); }
+  main { padding: 1.1rem; }
+  .two, .three, .landing-hero, .video-grid { grid-template-columns: 1fr; }
+  .video-tile { min-height: 180px; }
+  .landing-hero { padding: 1.75rem 0 2.25rem; gap: 2rem; }
+  .landing-hero h1 { font-size: 2.6rem; }
+  h1 { font-size: 1.7rem; }
+  .auth-page main { padding-top: 2rem; }
+  .auth-page .form, .hero, .panel { padding: 1.25rem; }
+  .video-grid { grid-template-columns: 1fr; }
+  .video-tile { min-height: 180px; }
+}
+
+
+
+
